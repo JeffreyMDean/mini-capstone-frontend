@@ -1,5 +1,6 @@
 import { ProductsShow } from "./ProductsShow";
 import { Modal } from "./Modal";
+import { CartedProductsIndex } from './CartedProductsIndex'
 
 export function Content() {
   const [products, setProducts] = useState([]);
@@ -16,13 +17,18 @@ export function Content() {
     console.log("handleClose");
     setIsProductsShowVisible(false);
   };
-  
+  <Routes>
+    <Route path="/login" element={<Login />} />
+    <Route path="/products/new" element={<ProductsNew onCreateProduct={handleCreateProduct}/>} />
+        <Route path="/" element={<ProductsIndex products={products} onShowProduct={handleShowProduct} />} />
+        <Route path="/cart" element={<CartedProductsIndex />} />
+  </Routes>
   return (
     <main>
       <ProductsIndex products={products} onShowProduct={handleShowProduct}/>
       <Modal show={isProductsShowVisible} onClose={handleClose}>
-      <ProductsShow product={currentProduct}
-      </Modal>
+      <ProductsShow product={currentProduct}>
+      </Modal> 
     </main>
   )
 }

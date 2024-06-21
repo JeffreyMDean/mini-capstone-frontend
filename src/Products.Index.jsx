@@ -1,3 +1,4 @@
+
 export function ProductsIndex(props) {
   return (
     <div>
@@ -7,8 +8,10 @@ export function ProductsIndex(props) {
         <p>{product.title}</p>
         <p>{product.name}</p>
         <p>{product.price}</p>
-        <p>{product.}</p>
+        <p>{product.image_url}</p>
+        <p>{product.description}</p>
         <button onClick={() => props.onShowProdcut(product)}>More info</button>
+    </div>
     </div>
   );
 }
