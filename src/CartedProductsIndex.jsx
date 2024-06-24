@@ -5,17 +5,20 @@ export function CartedProductsIndex() {
   const [cartedProducts, setCartedProducts] = useState([])
   const getData = () => {
     console.log('getting data')
-
+    window.location.href = '/'
+  }
+}
   axios.get('http://localhost:3000/carted_products.json').then(response => {
     console.log(response.data);
     setCartedProducts(response.data)
   })
-  }
+
 
   const buy = () => {
     console.log('buy')
     axios.post('http://localhost:3000/orders.json').then(response => {
       console.log(response.data);
+
     })
   }
 
