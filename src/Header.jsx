@@ -1,4 +1,23 @@
+import {logoutLink} from './LogoutLink'
+
 export function Header() {
+  let loggedInStatus;
+
+  if (localStorage.jwt) {
+    console.log("I am logged in");
+    loggedInStatus = (
+      <>
+        <LogoutLink /> | <a href="/recipes/new">Recipes new</a>
+      </>
+    )
+  } else {
+    console.log("I am logged out");
+    loggedInStatus = (
+      <>
+        <a href="/signup">Signup</a> | <a href="/login">Login</a>
+      </>
+    )
+  }
   return (
     <header>
       <nav>
@@ -38,8 +57,8 @@ export function Header() {
     </div>
   </div>
 </nav>
-        <a href="#">Home</a> | <a href="#">Link</a>
       </nav>
+      <a href="/">Home</a> | {loggedInStatus}
     </header>
   )
 }
